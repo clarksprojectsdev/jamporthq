@@ -1,0 +1,12 @@
+{
+  "name": "jamport-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Use index.html for immediate viewing'",
+    "build": "echo 'Use index.html - no build needed'",
+    "start": "echo 'Open index.html in your browser'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

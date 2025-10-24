@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JamPort - Where Beats Meet Events</title>
+    <meta name="description" content="The ultimate platform for music producers to sell beats and promote events. Connect with artists, showcase your talent, and grow your music career.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient': 'gradient 15s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(to right, #a855f7, #ec4899, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .music-gradient {
+            background: linear-gradient(135deg, #581c87, #1e3a8a, #312e81);
+        }
+        .beat-card {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(55, 65, 81, 0.5);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .beat-card:hover {
+            border-color: rgba(168, 85, 247, 0.5);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-black text-white">
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center bg-black overflow-hidden">
+        <!-- Background gradients -->
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    <span class="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                        JamPort
+                    </span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-4">
+                    Where Beats Meet Events
+                </p>
+                <p class="text-base md:text-lg text-gray-400 mb-8 max-w-md md:max-w-lg">
+                    The platform for music producers to sell beats, host events, and
+                    connect with artists. Turn your passion into profit.
+                </p>
+
+                <!-- Email Form -->
+                <form id="emailForm" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto md:mx-0">
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        class="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
+                        required
+                    />
+                    <button
+                        type="submit"
+                        class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg shadow-lg shadow-purple-500/30 hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+                    >
+                        Get Early Access
+                    </button>
+                </form>
+
+                <!-- Small Highlights -->
+                <div class="flex flex-wrap gap-6 mt-6 justify-center md:justify-start text-sm text-gray-400">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span>Coming Soon to iOS & Android</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>Free to Join</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <span>No Hidden Fees</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mockup Image -->
+            <div class="flex justify-center md:justify-end">
+                <img
+                    src="./public/mockup-phone.png"
+                    alt="JamPort App Preview"
+                    class="w-64 md:w-80 lg:w-96 drop-shadow-2xl rounded-[10px]"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-6 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Everything You Need to <span class="gradient-text">Succeed</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    JamPort combines the best of beat selling and event promotion in one powerful platform
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="beat-card group">
+                    <div class="text-4xl mb-4">🎵</div>
+                    <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-purple-400 transition-colors">
+                        Beat Marketplace
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Upload, showcase, and sell your beats to artists worldwide. Set your own prices and keep 100% of your earnings.
+                    </p>
+                    <div class="mt-4 w-12 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                </div>
+
+                <div class="beat-card group">
+                    <div class="text-4xl mb-4">🎫</div>
+                    <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-purple-400 transition-colors">
+                        Event Promotion
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Create and promote music events, concerts, and shows. Sell tickets directly through the platform.
+                    </p>
+                    <div class="mt-4 w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+                </div>
+
+                <div class="beat-card group">
+                    <div class="text-4xl mb-4">👥</div>
+                    <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-purple-400 transition-colors">
+                        Artist Network
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Connect with producers, artists, and industry professionals. Build your network and grow together.
+                    </p>
+                    <div class="mt-4 w-12 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"></div>
+                </div>
+
+                <div class="beat-card group">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-purple-400 transition-colors">
+                        Analytics Dashboard
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Track your sales, event attendance, and audience engagement with detailed analytics and insights.
+                    </p>
+                    <div class="mt-4 w-12 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></div>
+                </div>
+
+                <div class="beat-card group">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-purple-400 transition-colors">
+                        Direct Messaging
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Chat directly with buyers, collaborators, and fans. Build relationships that last beyond transactions.
+                    </p>
+                    <div class="mt-4 w-12 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+                </div>
+
+                <div class="beat-card group">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-purple-400 transition-colors">
+                        Secure Payments
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Safe and secure payment processing. Get paid instantly with built-in escrow protection.
+                    </p>
+                    <div class="mt-4 w-12 h-1 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <div class="inline-flex items-center gap-4 bg-gray-800/50 rounded-full px-8 py-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gray-300">Live Platform</span>
+                    </div>
+                    <div class="w-px h-4 bg-gray-600"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gray-300">Mobile App</span>
+                    </div>
+                    <div class="w-px h-4 bg-gray-600"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gray-300">Web Platform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview Section -->
+    <section class="py-20 px-6 bg-black">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    See <span class="gradient-text">JamPort</span> in Action
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Experience the future of music collaboration and event promotion
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Phone Mockup -->
+                <div class="relative">
+                    <div class="mx-auto w-80 h-[600px] bg-gray-900 rounded-[3rem] p-2 shadow-2xl">
+                        <div class="w-full h-full bg-black rounded-[2.5rem] overflow-hidden relative">
+                            <!-- Status Bar -->
+                            <div class="flex justify-between items-center px-6 py-3 text-white text-sm">
+                                <span>9:41</span>
+                                <div class="flex items-center gap-1">
+                                    <div class="w-4 h-2 bg-white rounded-sm"></div>
+                                    <div class="w-6 h-3 border border-white rounded-sm"></div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Navigation -->
+                            <div class="flex border-b border-gray-800">
+                                <button onclick="showTab('beats')" id="beats-tab" class="flex-1 flex flex-col items-center py-4 px-2 text-purple-400 border-b-2 border-purple-400">
+                                    <span class="text-lg mb-1">🎵</span>
+                                    <span class="text-xs">Beat Marketplace</span>
+                                </button>
+                                <button onclick="showTab('events')" id="events-tab" class="flex-1 flex flex-col items-center py-4 px-2 text-gray-500">
+                                    <span class="text-lg mb-1">🎫</span>
+                                    <span class="text-xs">Events</span>
+                                </button>
+                                <button onclick="showTab('profile')" id="profile-tab" class="flex-1 flex flex-col items-center py-4 px-2 text-gray-500">
+                                    <span class="text-lg mb-1">👤</span>
+                                    <span class="text-xs">Profile</span>
+                                </button>
+                            </div>
+
+                            <!-- Content Area -->
+                            <div class="p-4 h-full overflow-y-auto">
+                                <div id="beats-content">
+                                    <div class="mb-4">
+                                        <h3 class="text-white text-lg font-semibold mb-2">Discover Amazing Beats</h3>
+                                        <p class="text-gray-400 text-sm">Browse thousands of high-quality beats from talented producers worldwide</p>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-800 rounded-lg p-3">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="text-white font-medium text-sm">Trap Beat 2024</h4>
+                                                <span class="text-purple-400 font-semibold text-sm">$29.99</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs text-gray-400">
+                                                <span>BeatMaster</span>
+                                                <span>2.3k plays</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-gray-800 rounded-lg p-3">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="text-white font-medium text-sm">Hip Hop Instrumental</h4>
+                                                <span class="text-purple-400 font-semibold text-sm">$19.99</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs text-gray-400">
+                                                <span>SoundWizard</span>
+                                                <span>1.8k plays</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-gray-800 rounded-lg p-3">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="text-white font-medium text-sm">R&B Soul Beat</h4>
+                                                <span class="text-purple-400 font-semibold text-sm">$24.99</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs text-gray-400">
+                                                <span>MelodyMaker</span>
+                                                <span>3.1k plays</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="events-content" class="hidden">
+                                    <div class="mb-4">
+                                        <h3 class="text-white text-lg font-semibold mb-2">Upcoming Events</h3>
+                                        <p class="text-gray-400 text-sm">Find and attend the hottest music events in your city</p>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-800 rounded-lg p-3">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="text-white font-medium text-sm">Summer Music Festival</h4>
+                                                <span class="text-blue-400 font-semibold text-sm">$45</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs text-gray-400">
+                                                <span>July 15, 2024</span>
+                                                <span>Central Park</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-gray-800 rounded-lg p-3">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="text-white font-medium text-sm">Underground Hip Hop Night</h4>
+                                                <span class="text-blue-400 font-semibold text-sm">$25</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs text-gray-400">
+                                                <span>July 22, 2024</span>
+                                                <span>The Venue</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-gray-800 rounded-lg p-3">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="text-white font-medium text-sm">Producer Showcase</h4>
+                                                <span class="text-blue-400 font-semibold text-sm">$35</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs text-gray-400">
+                                                <span>July 30, 2024</span>
+                                                <span>Studio 54</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="profile-content" class="hidden">
+                                    <div class="mb-4">
+                                        <h3 class="text-white text-lg font-semibold mb-2">Your Dashboard</h3>
+                                        <p class="text-gray-400 text-sm">Manage your beats, events, and track your success</p>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-800 rounded-lg p-3">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="text-white font-medium text-sm">Total Sales</h4>
+                                                <span class="text-green-400 font-semibold text-sm">$2,450</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs text-gray-400">
+                                                <span>This Month</span>
+                                                <span>+12%</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-gray-800 rounded-lg p-3">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="text-white font-medium text-sm">Active Beats</h4>
+                                                <span class="text-purple-400 font-semibold text-sm">24</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs text-gray-400">
+                                                <span>In Marketplace</span>
+                                                <span>+3</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-gray-800 rounded-lg p-3">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="text-white font-medium text-sm">Events Created</h4>
+                                                <span class="text-blue-400 font-semibold text-sm">8</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-xs text-gray-400">
+                                                <span>This Year</span>
+                                                <span>+2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Description -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 id="feature-title" class="text-3xl font-bold mb-4 text-white">Sell Your Beats</h3>
+                        <p id="feature-description" class="text-lg text-gray-400 leading-relaxed">
+                            Upload your beats, set your prices, and start earning from your music. Our platform makes it easy to showcase your talent and connect with artists who need your sound.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span>Real-time Updates</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span>Secure Payments</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                            <span>Mobile Optimized</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                            Join the Waitlist
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 px-6 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    How <span class="gradient-text">JamPort</span> Works
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Get started in minutes and begin your journey to music success
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="relative">
+                    <div class="relative z-10 text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-xl mb-6">01</div>
+                        <div class="text-4xl mb-4">👤</div>
+                        <h3 class="text-xl font-semibold mb-4 text-white">Sign Up & Create Profile</h3>
+                        <p class="text-gray-400 leading-relaxed">Join JamPort in seconds. Set up your producer profile, upload your best work, and tell your story.</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative z-10 text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xl mb-6">02</div>
+                        <div class="text-4xl mb-4">🎵</div>
+                        <h3 class="text-xl font-semibold mb-4 text-white">Upload Your Beats</h3>
+                        <p class="text-gray-400 leading-relaxed">Add your beats with high-quality previews, set your prices, and choose your licensing terms.</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative z-10 text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold text-xl mb-6">03</div>
+                        <div class="text-4xl mb-4">🎫</div>
+                        <h3 class="text-xl font-semibold mb-4 text-white">Create Events</h3>
+                        <p class="text-gray-400 leading-relaxed">Promote your shows, concerts, and music events. Sell tickets and manage your audience.</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative z-10 text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-xl mb-6">04</div>
+                        <div class="text-4xl mb-4">💰</div>
+                        <h3 class="text-xl font-semibold mb-4 text-white">Connect & Earn</h3>
+                        <p class="text-gray-400 leading-relaxed">Network with artists, sell your beats, fill your events, and grow your music career.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center mt-16">
+                <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-2xl p-8 border border-gray-700/50">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Ready to Start Your Music Journey?</h3>
+                    <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                        Join thousands of producers who are already using JamPort to grow their music careers and connect with artists worldwide.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                            Get Early Access
+                        </button>
+                        <button class="border border-gray-600 text-gray-300 px-8 py-4 rounded-lg font-semibold hover:border-purple-500 hover:text-purple-400 transition-all duration-300">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-2">10K+</div>
+                    <div class="text-gray-400">Active Producers</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-2">50K+</div>
+                    <div class="text-gray-400">Beats Sold</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-2">1K+</div>
+                    <div class="text-gray-400">Events Created</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-2">$2M+</div>
+                    <div class="text-gray-400">Earnings Generated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 py-16">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
+                <!-- Brand Section -->
+                <div class="lg:col-span-2">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold gradient-text mb-4">JamPort</h3>
+                        <p class="text-gray-400 leading-relaxed mb-6">
+                            The ultimate platform for music producers to sell beats, promote events, 
+                            and connect with artists worldwide.
+                        </p>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300" aria-label="Twitter">𝕏</a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300" aria-label="Instagram">📷</a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300" aria-label="TikTok">🎵</a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300" aria-label="YouTube">▶️</a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300" aria-label="Discord">💬</a>
+                    </div>
+                </div>
+
+                <!-- Links Sections -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Beat Marketplace</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Event Promotion</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Artist Network</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Analytics</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Community</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Status</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Licensing</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="border-t border-gray-800 pt-8 mb-8">
+                <div class="max-w-md mx-auto text-center">
+                    <h4 class="text-white font-semibold mb-4">Stay Updated</h4>
+                    <p class="text-gray-400 mb-6">Get the latest updates on new features, events, and opportunities.</p>
+                    <div class="flex gap-3">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20">
+                        <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="text-gray-400 text-sm">© 2024 JamPort. All rights reserved.</div>
+                    <div class="flex items-center gap-6 text-sm text-gray-400">
+                        <span>Made with ❤️ for the music community</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <span>All systems operational</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabName) {
+            // Hide all content
+            document.getElementById('beats-content').classList.add('hidden');
+            document.getElementById('events-content').classList.add('hidden');
+            document.getElementById('profile-content').classList.add('hidden');
+            
+            // Remove active styles from all tabs
+            document.getElementById('beats-tab').classList.remove('text-purple-400', 'border-b-2', 'border-purple-400');
+            document.getElementById('events-tab').classList.remove('text-purple-400', 'border-b-2', 'border-purple-400');
+            document.getElementById('profile-tab').classList.remove('text-purple-400', 'border-b-2', 'border-purple-400');
+            
+            document.getElementById('beats-tab').classList.add('text-gray-500');
+            document.getElementById('events-tab').classList.add('text-gray-500');
+            document.getElementById('profile-tab').classList.add('text-gray-500');
+            
+            // Show selected content and update tab styles
+            document.getElementById(tabName + '-content').classList.remove('hidden');
+            document.getElementById(tabName + '-tab').classList.remove('text-gray-500');
+            document.getElementById(tabName + '-tab').classList.add('text-purple-400', 'border-b-2', 'border-purple-400');
+            
+            // Update feature description
+            const titles = {
+                'beats': 'Sell Your Beats',
+                'events': 'Promote Your Events',
+                'profile': 'Track Your Success'
+            };
+            
+            const descriptions = {
+                'beats': 'Upload your beats, set your prices, and start earning from your music. Our platform makes it easy to showcase your talent and connect with artists who need your sound.',
+                'events': 'Create and promote music events with ease. Sell tickets, manage attendees, and build a community around your music. From intimate shows to major festivals.',
+                'profile': 'Monitor your growth with detailed analytics. Track sales, event attendance, and audience engagement. Make data-driven decisions to grow your music career.'
+            };
+            
+            document.getElementById('feature-title').textContent = titles[tabName];
+            document.getElementById('feature-description').textContent = descriptions[tabName];
+        }
+
+        // Email form handling
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            alert('Thank you for your interest! We\'ll notify you when JamPort launches. Email: ' + email);
+            document.getElementById('email').value = '';
+        });
+    </script>
+</body>
+</html>
