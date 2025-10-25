@@ -128,20 +128,22 @@
                     connect with artists. Turn your passion into profit.
                 </p>
 
-                <!-- Tally.so Email Form -->
-                <div class="max-w-md mx-auto md:mx-0">
-                    <iframe 
-                        src="https://tally.so/embed/wgED11?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&embed=1" 
-                        loading="lazy" 
-                        width="100%" 
-                        height="120" 
-                        frameborder="0" 
-                        marginheight="0" 
-                        marginwidth="0" 
-                        title="Get Early Access"
-                        style="border-radius: 0.5rem; background: transparent; border: none;">
-                    </iframe>
-                </div>
+                <!-- Email Form -->
+                <form id="emailForm" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto md:mx-0">
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        class="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
+                        required
+                    />
+                    <button
+                        type="submit"
+                        class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg shadow-lg shadow-purple-500/30 hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+                    >
+                        Get Early Access
+                    </button>
+                </form>
 
                 <!-- Small Highlights -->
                 <div class="flex flex-wrap gap-6 mt-6 justify-center md:justify-start text-sm text-gray-400">
@@ -633,19 +635,9 @@
                 <div class="max-w-md mx-auto text-center">
                     <h4 class="text-white font-semibold mb-4">Stay Updated</h4>
                     <p class="text-gray-400 mb-6">Get the latest updates on new features, events, and opportunities.</p>
-                    <!-- Tally.so Newsletter Form -->
-                    <div class="w-full">
-                        <iframe 
-                            src="https://tally.so/embed/wzpqQ0?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&embed=1" 
-                            loading="lazy" 
-                            width="100%" 
-                            height="120" 
-                            frameborder="0" 
-                            marginheight="0" 
-                            marginwidth="0" 
-                            title="Newsletter Signup"
-                            style="border-radius: 0.5rem; background: transparent; border: none;">
-                        </iframe>
+                    <div class="flex gap-3">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20">
+                        <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300">Subscribe</button>
                     </div>
                 </div>
             </div>
@@ -712,8 +704,13 @@
             document.getElementById('feature-description').textContent = descriptions[tabName];
         }
 
-        // Tally.so forms handle submission automatically
-        // No additional JavaScript needed for form handling
+        // Email form handling
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            alert('Thank you for your interest! We\'ll notify you when JamPort launches. Email: ' + email);
+            document.getElementById('email').value = '';
+        });
     </script>
 </body>
 </html>
