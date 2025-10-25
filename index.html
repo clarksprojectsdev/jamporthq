@@ -93,6 +93,17 @@
     </style>
 </head>
 <body class="min-h-screen bg-black text-white">
+    <!-- Header with Logo -->
+    <header class="absolute top-0 left-0 right-0 z-50 p-6">
+        <div class="max-w-7xl mx-auto">
+            <img 
+                src="./public/jamport-logo.jpg" 
+                alt="JamPort Logo" 
+                class="h-12 w-auto"
+            />
+        </div>
+    </header>
+
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center bg-black overflow-hidden">
         <!-- Background gradients -->
@@ -642,7 +653,14 @@
             <!-- Bottom Bar -->
             <div class="border-t border-gray-800 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div class="text-gray-400 text-sm">© 2025 JamPort. All rights reserved.</div>
+                    <div class="flex flex-col items-center md:items-start gap-2">
+                        <img 
+                            src="./public/jamport-logo.jpg" 
+                            alt="JamPort Logo" 
+                            class="h-8 w-auto opacity-80"
+                        />
+                        <div class="text-gray-400 text-sm">© 2025 JamPort. All rights reserved.</div>
+                    </div>
                     <div class="flex items-center gap-6 text-sm text-gray-400">
                         <span>Made with ❤️ for the music community</span>
                         <div class="flex items-center gap-2">
