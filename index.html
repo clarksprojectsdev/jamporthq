@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JamPort - Where Beats Meet Events</title>
     <meta name="description" content="The ultimate platform for music producers to sell beats and promote events. Connect with artists, showcase your talent, and grow your music career.">
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="keywords" content="beat selling platform, music producer tools, event promotion, music marketplace, producer network, beat marketplace, music events, artist collaboration">
+    <meta name="author" content="JamPort">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="JamPort - Where Beats Meet Events">
+    <meta property="og:description" content="The ultimate platform for music producers to sell beats and promote events. Connect with artists, showcase your talent, and grow your music career.">
+    <meta property="og:image" content="https://jamporthq.com/public/mockup-phone.png">
+    <meta property="og:url" content="https://jamporthq.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="JamPort">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JamPort - Where Beats Meet Events">
+    <meta name="twitter:description" content="The ultimate platform for music producers to sell beats and promote events. Connect with artists, showcase your talent, and grow your music career.">
+    <meta name="twitter:image" content="https://jamporthq.com/public/mockup-phone.png">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPCJ09HDC0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KPCJ09HDC0');
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -86,22 +117,20 @@
                     connect with artists. Turn your passion into profit.
                 </p>
 
-                <!-- Email Form -->
-                <form id="emailForm" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto md:mx-0">
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        class="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
-                        required
-                    />
-                    <button
-                        type="submit"
-                        class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg shadow-lg shadow-purple-500/30 hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
-                    >
-                        Get Early Access
-                    </button>
-                </form>
+                <!-- Tally.so Email Form -->
+                <div class="max-w-md mx-auto md:mx-0">
+                    <iframe 
+                        src="https://tally.so/embed/wgED11?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                        loading="lazy" 
+                        width="100%" 
+                        height="100" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        title="Get Early Access"
+                        style="border-radius: 0.5rem; background: transparent;">
+                    </iframe>
+                </div>
 
                 <!-- Small Highlights -->
                 <div class="flex flex-wrap gap-6 mt-6 justify-center md:justify-start text-sm text-gray-400">
@@ -593,9 +622,19 @@
                 <div class="max-w-md mx-auto text-center">
                     <h4 class="text-white font-semibold mb-4">Stay Updated</h4>
                     <p class="text-gray-400 mb-6">Get the latest updates on new features, events, and opportunities.</p>
-                    <div class="flex gap-3">
-                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20">
-                        <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300">Subscribe</button>
+                    <!-- Tally.so Newsletter Form -->
+                    <div class="w-full">
+                        <iframe 
+                            src="https://tally.so/embed/wzpqQ0?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                            loading="lazy" 
+                            width="100%" 
+                            height="100" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            title="Newsletter Signup"
+                            style="border-radius: 0.5rem; background: transparent;">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -655,13 +694,8 @@
             document.getElementById('feature-description').textContent = descriptions[tabName];
         }
 
-        // Email form handling
-        document.getElementById('emailForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            alert('Thank you for your interest! We\'ll notify you when JamPort launches. Email: ' + email);
-            document.getElementById('email').value = '';
-        });
+        // Tally.so forms handle submission automatically
+        // No additional JavaScript needed for form handling
     </script>
 </body>
 </html>
