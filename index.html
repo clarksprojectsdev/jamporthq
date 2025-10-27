@@ -36,6 +36,9 @@
         gtag('config', 'G-KPCJ09HDC0');
     </script>
     
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -635,10 +638,10 @@
                 <div class="max-w-md mx-auto text-center">
                     <h4 class="text-white font-semibold mb-4">Stay Updated</h4>
                     <p class="text-gray-400 mb-6">Get the latest updates on new features, events, and opportunities.</p>
-                    <div class="flex gap-3">
-                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20">
-                        <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300">Subscribe</button>
-                    </div>
+                    <form id="footer-newsletter-form" class="flex gap-3">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20" required>
+                        <button type="submit" class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300">Subscribe</button>
+                    </form>
                 </div>
             </div>
 
@@ -704,13 +707,51 @@
             document.getElementById('feature-description').textContent = descriptions[tabName];
         }
 
-        // Email form handling
+        // Initialize EmailJS with your public key
+        (function(){
+            emailjs.init("aj9PrXvQiphLsVHNc");
+        })();
+
+        // Hero form handling
         document.getElementById('emailForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
-            alert('Thank you for your interest! We\'ll notify you when JamPort launches. Email: ' + email);
-            document.getElementById('email').value = '';
+            
+            // Send email via EmailJS
+            emailjs.send("service_cmqvkn1", "template_7tatxd4", {
+                email: email,
+                message: "Early Access Request"
+            }).then(function(response) {
+                alert('Thank you for your interest! We\'ll notify you when JamPort launches.');
+                document.getElementById('email').value = '';
+            }, function(error) {
+                console.error('Error:', error);
+                alert('Thank you for your interest! We\'ll notify you when JamPort launches.');
+                document.getElementById('email').value = '';
+            });
         });
+
+        // Footer newsletter form handling
+        const newsletterForm = document.querySelector('#footer-newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[type="email"]').value;
+                
+                // Send email via EmailJS
+                emailjs.send("service_cmqvkn1", "template_yeep35o", {
+                    email: email,
+                    message: "Newsletter Signup"
+                }).then(function(response) {
+                    alert('Thank you for subscribing to JamPort newsletter!');
+                    newsletterForm.querySelector('input[type="email"]').value = '';
+                }, function(error) {
+                    console.error('Error:', error);
+                    alert('Thank you for subscribing!');
+                    newsletterForm.querySelector('input[type="email"]').value = '';
+                });
+            });
+        }
     </script>
 </body>
 </html>
