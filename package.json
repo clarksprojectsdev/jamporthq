@@ -2,11 +2,10 @@
   "name": "jamport-web",
   "version": "0.1.0",
   "private": true,
+  "description": "Static HTML landing page for JamPort (JamPort Media Services) — no dependencies needed",
   "scripts": {
-    "dev": "echo 'Use index.html for immediate viewing'",
-    "build": "echo 'Use index.html - no build needed'",
+    "dev": "echo 'Open index.html in your browser - no build needed'",
+    "build": "echo 'This is a static HTML file - no build needed'",
     "start": "echo 'Open index.html in your browser'"
-  },
-  "dependencies": {},
-  "devDependencies": {}
+  }
 }

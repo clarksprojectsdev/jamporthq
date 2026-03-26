@@ -1,6 +1,6 @@
 # JamPort Website
 
-A modern, responsive landing page for JamPort - the ultimate platform for music producers to sell beats and promote events.
+A modern, responsive landing page for **JamPort** by **JamPort Media Services** — the platform for music producers to sell beats and promote events.
 
 ## Features
 
