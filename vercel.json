@@ -1,4 +1,7 @@
 {
+  "buildCommand": "echo \"JamPort web: static files in jamport-web/\"",
+  "installCommand": "echo \"skip\"",
+  "outputDirectory": "jamport-web",
   "cleanUrls": true,
   "trailingSlash": false
 }
