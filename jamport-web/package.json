@@ -5,7 +5,7 @@
   "description": "Static HTML landing for JamPort Media Services — deploy separately from the Expo app",
   "scripts": {
     "dev": "echo 'Open index.html in a browser — no build step'",
-    "build": "echo 'Static site — no npm build'",
+    "build": "node ./scripts/verify-static-site.js",
     "start": "echo 'Open index.html in a browser'"
   }
 }

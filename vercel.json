@@ -1,6 +1,6 @@
 {
-  "buildCommand": "echo \"JamPort web: static files in jamport-web/\"",
-  "installCommand": "echo \"skip\"",
+  "installCommand": "cd jamport-web && npm install",
+  "buildCommand": "cd jamport-web && npm run build",
   "outputDirectory": "jamport-web",
   "cleanUrls": true,
   "trailingSlash": false
