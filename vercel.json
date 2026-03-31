@@ -1,7 +1,0 @@
-{
-  "installCommand": "cd jamport-web && npm install",
-  "buildCommand": "cd jamport-web && npm run build",
-  "outputDirectory": "jamport-web",
-  "cleanUrls": true,
-  "trailingSlash": false
-}
