@@ -174,7 +174,7 @@
                     Everything You Need to <span class="gradient-text">Succeed</span>
                 </h2>
                 <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    JamPort Media Services brings you JamPort Media Services — the best of beat selling and event promotion in one powerful platform
+                    JamPort Media Services brings you the best of beat selling and event promotion in one powerful platform.
                 </p>
             </div>
 
@@ -717,17 +717,75 @@
             document.getElementById('feature-description').textContent = descriptions[tabName];
         }
 
-        // Initialize EmailJS with your public key
-        (function(){
-            emailjs.init("aj9PrXvQiphLsVHNc");
+        // Email: validate + sanitize before EmailJS (reduces template injection risk if echoed in templates)
+        var EMAIL_MAX_LEN = 254;
+        var EMAIL_REGEX = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+
+        function sanitizeEmailInput(raw) {
+            if (typeof raw !== 'string') return null;
+            var s = raw.trim();
+            if (s.length === 0 || s.length > EMAIL_MAX_LEN) return null;
+            if (/[\x00-\x1f\x7f<>\"'`\\;{}[\]]/.test(s)) return null;
+            return s;
+        }
+
+        function isValidEmailAddress(s) {
+            if (!s || s.length > EMAIL_MAX_LEN) return false;
+            var at = s.lastIndexOf('@');
+            if (at < 1 || at === s.length - 1) return false;
+            return EMAIL_REGEX.test(s);
+        }
+
+        function getValidatedEmail(raw) {
+            var sanitized = sanitizeEmailInput(raw);
+            if (!sanitized) return null;
+            var lower = sanitized.toLowerCase();
+            if (!isValidEmailAddress(lower)) return null;
+            return lower;
+        }
+
+        /** Client-side rate limit. Pair with EmailJS dashboard: domain allowlist + quotas. */
+        function rateLimitAllow(formKey, maxAttempts, windowMs) {
+            maxAttempts = maxAttempts || 5;
+            windowMs = windowMs || 600000;
+            try {
+                var key = 'jamport_rl_' + formKey;
+                var now = Date.now();
+                var raw = sessionStorage.getItem(key);
+                var data = raw ? JSON.parse(raw) : { count: 0, reset: now + windowMs };
+                if (now > data.reset) {
+                    data = { count: 0, reset: now + windowMs };
+                }
+                if (data.count >= maxAttempts) return false;
+                data.count += 1;
+                sessionStorage.setItem(key, JSON.stringify(data));
+                return true;
+            } catch (err) {
+                return true;
+            }
+        }
+
+        (function initEmailJS() {
+            if (typeof emailjs === 'undefined') return;
+            var pk = window.__JAMPORT_EMAILJS_PUBLIC_KEY__;
+            if (!pk || typeof pk !== 'string') {
+                console.warn('JamPort: EmailJS public key missing (see public/js/emailjs-config.js).');
+                return;
+            }
+            emailjs.init(pk);
         })();
 
-        // Hero form handling
         document.getElementById('emailForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            
-            // Send email via EmailJS
+            var email = getValidatedEmail(document.getElementById('email').value);
+            if (!email) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            if (!rateLimitAllow('hero', 5, 600000)) {
+                alert('Too many requests. Please try again in a few minutes.');
+                return;
+            }
             emailjs.send("service_cmqvkn1", "template_7tatxd4", {
                 email: email,
                 message: "Early Access Request"
@@ -741,14 +799,19 @@
             });
         });
 
-        // Footer newsletter form handling
         const newsletterForm = document.querySelector('#footer-newsletter-form');
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                const email = newsletterForm.querySelector('input[type="email"]').value;
-                
-                // Send email via EmailJS
+                var email = getValidatedEmail(newsletterForm.querySelector('input[type="email"]').value);
+                if (!email) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                if (!rateLimitAllow('newsletter', 5, 600000)) {
+                    alert('Too many requests. Please try again in a few minutes.');
+                    return;
+                }
                 emailjs.send("service_cmqvkn1", "template_yeep35o", {
                     email: email,
                     message: "Newsletter Signup"
